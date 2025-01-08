@@ -12,7 +12,7 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors({ origin: 'https://gilded-flan-219a54.netlify.app' }));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // Serve static files from "uploads"
 
 // MongoDB Connection
