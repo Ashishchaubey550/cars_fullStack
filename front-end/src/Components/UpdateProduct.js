@@ -21,7 +21,7 @@ function UpdateProduct() {
 
     const getProductDetails = async() =>{
         console.log(params)
-        let result = await fetch(`http://localhost:8000/product/${params.id}`)
+        let result = await fetch(`https://cars-fullstack.onrender.com/product/${params.id}`)
         result = await result.json();
         setCompany(result.company)
         setModel(result.model)
@@ -33,7 +33,7 @@ function UpdateProduct() {
 
     const UpdateProd = async () => {
         console.warn(company,model,color,distanceCovered , modelYear , price)
-        let result = await fetch(`http://localhost:8000/product/${params.id}`,{
+        let result = await fetch(`https://cars-fullstack.onrender.com/product/${params.id}`,{
             method:'Put',
             body:JSON.stringify({company,model,color,distanceCovered , modelYear , price}),
             headers:{

@@ -29,7 +29,7 @@ function AddProduct() {
         formData.append("image", image);
 
         try {
-            let result = await fetch("http://localhost:8000/add", {
+            let result = await fetch("https://cars-fullstack.onrender.com/add", {
                 method: "POST",
                 body: formData,
             });

@@ -11,7 +11,7 @@ function ProductList() {
 
   const getProducts = async () => {
     try {
-      let result = await fetch("http://localhost:8000/product");
+      let result = await fetch("https://cars-fullstack.onrender.com/product");
       result = await result.json();
       if (result && result.length > 0) {
         setProducts(result);
@@ -25,7 +25,7 @@ function ProductList() {
 
   const deleteCar = async (id) => {
     try {
-      let result = await fetch(`http://localhost:8000/product/${id}`, {
+      let result = await fetch(`https://cars-fullstack.onrender.com/product/${id}`, {
         method: "DELETE",
       });
       result = await result.json();
@@ -42,7 +42,7 @@ function ProductList() {
 
     if (key) {
       try {
-        let result = await fetch(`http://localhost:8000/search/${key}`);
+        let result = await fetch(`https://cars-fullstack.onrender.com/search/${key}`);
         result = await result.json();
 
         if (result) {
@@ -69,7 +69,7 @@ function ProductList() {
           {products.map((item, index) => (
             <div key={item._id} className="product-card">
               <img
-                src={`http://localhost:8000${item.image}`}
+                src={`https://cars-fullstack.onrender.com${item.image}`}
                 alt={item.model}
                 className="product-image"
               />
