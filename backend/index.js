@@ -12,8 +12,22 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(cors({ origin: 'https://gilded-flan-219a54.netlify.app' }));
-app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // Serve static files from "uploads"
+const allowedOrigins = [
+  'https://gilded-flan-219a54.netlify.app',
+  'https://677e3e8308aa6d3d50ab16e0--peppy-cocada-f1cb47.netlify.app',
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+  })
+);app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // Serve static files from "uploads"
 
 // MongoDB Connection
 mongoose
